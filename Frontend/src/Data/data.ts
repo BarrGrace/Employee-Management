@@ -1,0 +1,1 @@
+export const days_of_the_week : string[] = ["Monday", "Tusday", "Wednsday", "Thursday", "Friday", "Saturday", "Sunday"];
