@@ -15,7 +15,10 @@ export function AddEmployee() {
             Saturday: false,
             Sunday: false
         },
-        holiday: ""
+        holiday: {
+            start: null,
+            end: null
+        }
     });
 
     async function sendInfo(){

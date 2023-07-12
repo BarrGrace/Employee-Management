@@ -21,7 +21,10 @@ export type employee_data = {
         Saturday: boolean,
         Sunday: boolean
     }
-    holiday: string
+    holiday: {
+        start: Date | null,
+        end: Date | null
+    }
 }
 
 export type data_function = (employee: employee_data) => void;

@@ -13,13 +13,13 @@ export function useEmployee(employee_info: employee_data) {
                     [e.target.id]: e.target.checked
                 }
             })
-            return
         }
-
-        setEmployee({
-            ...employee,
-            [e.target.id]: e.target.value
-        })
+        else {
+            setEmployee({
+                ...employee,
+                [e.target.id]: e.target.value
+            })
+        }
     }
 
     return {

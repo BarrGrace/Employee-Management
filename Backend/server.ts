@@ -11,7 +11,7 @@ data_base.loadDatabase();
 
 app.post("/", (req: Request, res: Response) => {
     const data = req.body;
-    data_base.insert(data)
+    data_base.insert(data);
 
     res.json({
         status: "Success"
@@ -27,11 +27,12 @@ app.post("/update", (req: Request, res: Response) => {
             last_name: data.update.last_name,
             id: data.employee_info.id,
             work_days: data.update.work_days,
-            holiday: data.employee_info.holiday
+            holiday: data.update.holiday
         },
         {},
         (() => console.log('employee has been updated'))
     )
+    console.log("holiday", data.update.holiday)
     res.json({
         status: 'Success'
     })
@@ -57,6 +58,7 @@ app.get('/Employees', (req: Request, res: Response) => {
             res.end();
             return
         }
+        console.log("data:", data)
         res.json(data);
     })
 })

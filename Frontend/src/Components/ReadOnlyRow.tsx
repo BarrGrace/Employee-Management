@@ -12,6 +12,12 @@ export function ReadOnlyRow({ employee, index, setEdit, handleServerData } : IRe
         event.preventDefault();
         setEdit(employee.id);
     }
+    function handleHoliday(): string {
+        if (employee.holiday.start && employee.holiday.end) {
+            return [employee.holiday.start, employee.holiday.end].join(" to ");
+        }
+        return "No Holiday Plan";
+    }
 
     return (
         <tr key = {index}>
@@ -27,7 +33,7 @@ export function ReadOnlyRow({ employee, index, setEdit, handleServerData } : IRe
                 {employee.work_days.Saturday ? "S | " : "❌ | "}
                 {employee.work_days.Sunday ? "S" : "❌"}
             </td>
-            <td>{employee.holiday}</td>
+            <td>{handleHoliday()}</td>
             <td>
                 <button 
                 type = "button" 

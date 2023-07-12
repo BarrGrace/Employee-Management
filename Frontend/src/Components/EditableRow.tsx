@@ -1,6 +1,8 @@
 import { employee_data } from "../../../Backend/Types/Types"
 import { days_of_the_week } from "../Data/data"
 import { useEmployee } from "../Hooks/useEmployee"
+import 'react-datepicker/dist/react-datepicker.css'
+import { HolidayDate } from "./HolidayDate"
 
 interface IEdiableRowProps {
     employee_info: employee_data,
@@ -9,7 +11,7 @@ interface IEdiableRowProps {
 }
 
 export function EditableRow({ employee_info, setEdit, handleServerData }: IEdiableRowProps) {
-    const { employee, handle } = useEmployee(employee_info);
+    const { employee, handle, setEmployee } = useEmployee(employee_info);
     
     function handleCheck(day: string): boolean {
         switch (day) {
@@ -64,17 +66,15 @@ export function EditableRow({ employee_info, setEdit, handleServerData }: IEdiab
                 )}
             </td>
             <td>
-                <input
-                    type = "text"
-                    placeholder = {employee.holiday}
-                    id = 'holidy'
-                    onChange = {handle}
-                ></input>
+                    start:
+                    <br/><HolidayDate employee={employee} setEmployee={setEmployee} time_period="start"/><br/>
+                    end:
+                    <br/><HolidayDate employee={employee} setEmployee={setEmployee} time_period="end"/>
             </td>
             <td>
                 <button 
-                type = "button"
-                onClick = {() => handleServerData(({
+                type="button"
+                onClick={() => handleServerData(({
                     employee_info: employee_info,
                     update: employee
                 }), 
@@ -83,8 +83,8 @@ export function EditableRow({ employee_info, setEdit, handleServerData }: IEdiab
             </td>
             <td>
                 <button 
-                type = 'button' 
-                onClick = {() => setEdit(-1)}
+                type='button' 
+                onClick={() => setEdit(-1)}
                 >cancel</button>
             </td>
         </tr>
